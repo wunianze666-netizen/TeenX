@@ -2,10 +2,6 @@
   <strong>简体中文</strong> &middot; <a href="README_EN.md">English</a>
 </p>
 
-<p align="center">
-  <img src="docs/assets/readme/teenx-cover.webp" alt="TeenX：让每个孩子都成为自己 AI 队伍的队长" width="880" />
-</p>
-
 <h1 align="center">TeenX · 少年 AI 队伍养成平台</h1>
 
 <p align="center">

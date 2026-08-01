@@ -2,10 +2,6 @@
   <a href="README.md">简体中文</a> &middot; <strong>English</strong>
 </p>
 
-<p align="center">
-  <img src="docs/assets/readme/teenx-cover.webp" alt="TeenX cover: every child becomes the Captain of their own AI team" width="880" />
-</p>
-
 <h1 align="center">TeenX · An AI Team-Building Platform for Ages 11–16</h1>
 
 <p align="center">
