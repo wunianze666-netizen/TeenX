@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="#快速开始"><strong>快速开始</strong></a> &middot;
-  <a href="https://github.com/wunianze666-netizen/teenX"><strong>GitHub</strong></a> &middot;
+  <a href="https://github.com/wunianze666-netizen/TeenX"><strong>GitHub</strong></a> &middot;
   <a href="#架构与安全边界"><strong>架构</strong></a> &middot;
   <a href="#当前限制"><strong>限制</strong></a>
 </p>
