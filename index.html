@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TeenX AI 队伍养成平台交互演示" />
+    <title>TeenX · 交互演示</title>
+    <link rel="icon" href="./teenx-logo.webp" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <button class="brand" type="button" data-go="studio" aria-label="返回 Studio">
+          <img src="./teenx-logo.webp" width="48" height="48" alt="" />
+          <span>TeenX</span>
+        </button>
+        <nav class="nav-tabs" aria-label="演示导航" role="tablist">
+          <button type="button" data-nav="studio" role="tab">Studio</button>
+          <button type="button" data-nav="run" role="tab">试跑</button>
+          <button type="button" data-nav="arena" role="tab">Arena</button>
+          <button type="button" data-nav="community" role="tab">社区</button>
+          <button type="button" data-nav="leaderboard" role="tab">排行榜</button>
+          <button type="button" data-nav="me" role="tab">我的</button>
+        </nav>
+        <div class="captain"><span class="status-dot"></span>队长 · 小创</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="view" data-panel="studio" aria-labelledby="studio-title">
+        <div class="shell page-stack">
+          <div class="team-band">
+            <div>
+              <p class="eyebrow">Team Studio</p>
+              <h1 id="studio-title">Todo Makers</h1>
+              <p class="lead">从组队、试跑到 Arena 评审的完整演示队伍</p>
+            </div>
+            <div class="team-facts">
+              <div><span>核心队员</span><strong>4 人</strong></div>
+              <div><span>当前版本</span><strong>v1</strong></div>
+              <button class="button secondary" type="button" data-toast="已封存演示版本 v2">封存当前版本</button>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <div><p class="eyebrow">Core team</p><h2>核心队员</h2></div>
+            <span class="meta">4 个角色 · 分工协作</span>
+          </div>
+          <div class="member-grid">
+            <article class="member-card"><span class="avatar">SC</span><div><h3>侦察员</h3><span class="pill">Scout</span></div><p>查清事实、寻找约束，为队伍准备可靠信息。</p><footer>工具 2 · 状态 idle</footer></article>
+            <article class="member-card"><span class="avatar">IN</span><div><h3>点子员</h3><span class="pill">Inventor</span></div><p>提出不同方向，把模糊目标变成可选方案。</p><footer>工具 2 · 状态 idle</footer></article>
+            <article class="member-card"><span class="avatar">BU</span><div><h3>搭建员</h3><span class="pill">Builder</span></div><p>把方案制作成可以查看和验证的实际产物。</p><footer>工具 3 · 状态 idle</footer></article>
+            <article class="member-card"><span class="avatar">CR</span><div><h3>挑刺员</h3><span class="pill">Critic</span></div><p>检查遗漏与风险，确保作品达到提交标准。</p><footer>工具 2 · 状态 idle</footer></article>
+          </div>
+
+          <div class="support-band">
+            <div><p class="eyebrow">System support</p><strong>系统辅助</strong></div>
+            <span>Reflection Coach · 待命</span><span>Summarizer · 待命</span>
+          </div>
+          <div class="action-band">
+            <div><h2>试试队伍现在的协作手感</h2><p>运行预置任务，查看角色动作、产物和评审结果。</p></div>
+            <button class="button primary" type="button" data-go="run">试跑一次 →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="run" aria-labelledby="run-title" hidden>
+        <div class="shell narrow page-stack">
+          <div class="page-head"><p class="eyebrow">Prepared run</p><h1 id="run-title">让队伍做个待办清单</h1><p class="lead">四个角色依次完成调研、构思、搭建和检查。</p></div>
+          <div class="run-layout" id="run-ready">
+            <div class="task-summary"><span class="task-index">01</span><div><h2>会记住的待办清单</h2><p>制作一个支持新增、完成、删除和本地保存的网页待办工具。</p></div></div>
+            <ol class="participant-list">
+              <li><span>SC</span><div><strong>侦察员</strong><small>整理功能与边界</small></div><b>待命</b></li>
+              <li><span>IN</span><div><strong>点子员</strong><small>提出交互方案</small></div><b>待命</b></li>
+              <li><span>BU</span><div><strong>搭建员</strong><small>完成网页产物</small></div><b>待命</b></li>
+              <li><span>CR</span><div><strong>挑刺员</strong><small>检查关键行为</small></div><b>待命</b></li>
+            </ol>
+            <button class="button primary wide" id="start-run" type="button">启动试跑</button>
+          </div>
+
+          <div class="run-progress" id="run-progress" hidden aria-live="polite">
+            <span class="loader"></span><p class="eyebrow">Running</p><h2>队伍正在协作…</h2><div class="progress-track"><span></span></div>
+          </div>
+
+          <div class="run-result" id="run-result" hidden>
+            <div class="result-head"><div><p class="eyebrow">Run completed</p><h2>试跑成功</h2></div><span class="success-mark">✓</span></div>
+            <div class="metric-row"><div><span>活动记录</span><strong>2</strong></div><div><span>产物</span><strong>1</strong></div><div><span>参与角色</span><strong>4</strong></div></div>
+            <div class="timeline"><div><time>00:01</time><p><strong>队伍接收任务</strong><span>四个角色载入任务上下文</span></p></div><div><time>00:02</time><p><strong>产物校验完成</strong><span>功能、结构和提交格式均通过</span></p></div></div>
+            <div class="product-row"><div><span class="file-icon">HTML</span><p><strong>Todo 演示产物</strong><small>网页应用 · 已验证</small></p></div><span class="pill blue">READY</span></div>
+            <div class="button-row"><button class="button secondary" type="button" id="replay-run">重新试跑</button><button class="button primary" type="button" data-go="arena">查看 Arena 成绩 →</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="arena" aria-labelledby="arena-title" hidden>
+        <div class="shell page-stack">
+          <div class="page-head split-head"><div><p class="eyebrow">Arena scorecard</p><h1 id="arena-title">会记住的待办清单</h1><p class="lead">基于同一提交版本的多维评审结果。</p></div><div class="score"><strong>894</strong><span>/ 1000</span><small>演示评分</small></div></div>
+          <div class="score-grid">
+            <div class="score-item"><div><span>功能完整性</span><strong>116 / 125</strong></div><i style="--score:92.8%"></i></div>
+            <div class="score-item"><div><span>交互体验</span><strong>112 / 125</strong></div><i style="--score:89.6%"></i></div>
+            <div class="score-item"><div><span>代码质量</span><strong>108 / 125</strong></div><i style="--score:86.4%"></i></div>
+            <div class="score-item"><div><span>可靠性</span><strong>114 / 125</strong></div><i style="--score:91.2%"></i></div>
+            <div class="score-item"><div><span>可访问性</span><strong>109 / 125</strong></div><i style="--score:87.2%"></i></div>
+            <div class="score-item"><div><span>视觉呈现</span><strong>113 / 125</strong></div><i style="--score:90.4%"></i></div>
+            <div class="score-item"><div><span>任务理解</span><strong>111 / 125</strong></div><i style="--score:88.8%"></i></div>
+            <div class="score-item"><div><span>完成度</span><strong>111 / 125</strong></div><i style="--score:88.8%"></i></div>
+          </div>
+          <div class="evidence-band"><div><p class="eyebrow">Evidence</p><h2>评分证据可追溯</h2></div><div class="evidence-list"><p><span>app.js:42</span> 使用本地存储保留任务状态</p><p><span>index.html:28</span> 完整键盘操作与语义标签</p><p><span>styles.css:74</span> 响应式布局覆盖移动端</p></div></div>
+          <div class="button-row end"><button class="button secondary" type="button" data-go="leaderboard">查看排行榜</button><button class="button primary" type="button" data-go="community">看看社区作品 →</button></div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="community" aria-labelledby="community-title" hidden>
+        <div class="shell page-stack">
+          <div class="page-head split-head"><div><p class="eyebrow">TeenX community</p><h1 id="community-title">队长社区</h1><p class="lead">分享作品、记录制作过程、互相解决问题。</p></div><div class="community-user"><span class="avatar">小</span><div><strong>小创</strong><small>@demo_captain</small></div></div></div>
+          <div class="community-stats"><div><strong>3</strong><span>主题</span></div><div><strong>22</strong><span>帖子</span></div><div><strong>2</strong><span>收藏</span></div><div><strong>1</strong><span>未读消息</span></div></div>
+          <div class="topic-list">
+            <article class="topic"><button type="button" class="topic-head" aria-expanded="false"><span class="topic-kind">作品展示</span><span><strong>我们的待办清单终于会记住任务了</strong><small>小创 · Todo Makers · 8 分钟前</small></span><b>12 回复</b></button><div class="topic-body" hidden><p>我们把任务保存到了浏览器本地，即使刷新页面也不会丢失。挑刺员还补上了键盘操作检查。</p><button type="button" class="bookmark">收藏</button></div></article>
+            <article class="topic"><button type="button" class="topic-head" aria-expanded="false"><span class="topic-kind blue">制作日志</span><span><strong>四个角色怎样分工，才不会重复劳动？</strong><small>Pixel Pioneers · 24 分钟前</small></span><b>7 回复</b></button><div class="topic-body" hidden><p>我们先让侦察员写约束，再让点子员只输出三个候选方向，搭建员就更容易做决定。</p><button type="button" class="bookmark">收藏</button></div></article>
+            <article class="topic"><button type="button" class="topic-head" aria-expanded="false"><span class="topic-kind">互助问答</span><span><strong>怎样让移动端的按钮更容易点击？</strong><small>Logic Lab · 1 小时前</small></span><b>3 回复</b></button><div class="topic-body" hidden><p>把点击区域保持在 44px 以上，并在窄屏上让主要按钮占满可用宽度。</p><button type="button" class="bookmark">收藏</button></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="leaderboard" aria-labelledby="leaderboard-title" hidden>
+        <div class="shell page-stack">
+          <div class="page-head"><p class="eyebrow">Sample ranking</p><h1 id="leaderboard-title">队伍排行榜</h1><p class="lead">会记住的待办清单 · 本次演示榜单</p></div>
+          <div class="rank-summary"><div><span>Todo Makers 排名</span><strong>#2</strong></div><div><span>当前得分</span><strong>894</strong></div><div><span>参赛队伍</span><strong>5</strong></div></div>
+          <div class="table-wrap"><table><thead><tr><th>排名</th><th>队伍</th><th>完成时间</th><th>得分</th></tr></thead><tbody><tr><td>1</td><td><strong>Pixel Pioneers</strong></td><td>09:10</td><td>926</td></tr><tr class="current"><td>2</td><td><strong>Todo Makers</strong><span class="pill">当前队伍</span></td><td>10:42</td><td>894</td></tr><tr><td>3</td><td><strong>Logic Lab</strong></td><td>12:30</td><td>861</td></tr><tr><td>4</td><td><strong>Spark Studio</strong></td><td>15:40</td><td>824</td></tr><tr><td>5</td><td><strong>Code Crafters</strong></td><td>11:05</td><td>788</td></tr></tbody></table></div>
+          <div class="button-row end"><button class="button primary" type="button" data-go="me">查看队长主页 →</button></div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="me" aria-labelledby="me-title" hidden>
+        <div class="shell page-stack">
+          <div class="profile-head"><span class="profile-avatar">小创</span><div><p class="eyebrow">Captain profile</p><h1 id="me-title">小创</h1><p class="lead">Todo Makers 队长 · 正在把点子变成作品</p></div><span class="pill blue">演示身份</span></div>
+          <div class="profile-stats"><div><strong>1</strong><span>队伍</span></div><div><strong>4</strong><span>核心队员</span></div><div><strong>1</strong><span>封存版本</span></div><div><strong>894</strong><span>Arena 得分</span></div></div>
+          <div class="settings-band"><div><p class="eyebrow">Privacy</p><h2>公开资料设置</h2><p>队长可以分别控制队伍、作品和社区动态的可见性。</p></div><div class="toggle-list"><label><span><strong>公开队伍</strong><small>其他队长可以查看队伍介绍</small></span><input type="checkbox" checked /></label><label><span><strong>公开 Arena 作品</strong><small>展示非敏感的作品摘要</small></span><input type="checkbox" checked /></label><label><span><strong>公开社区动态</strong><small>在主页显示最近讨论</small></span><input type="checkbox" /></label></div></div>
+          <div class="action-band"><div><h2>Demo 流程完成</h2><p>你已经看过组队、试跑、评审、社区和队长身份。</p></div><button class="button primary" type="button" data-go="studio">回到 Studio</button></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="shell"><span>TeenX · 让每个孩子成为 AI 队伍的队长</span><span>交互演示使用预置数据，不连接外部服务</span></div></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
