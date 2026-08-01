@@ -6,12 +6,68 @@
     <meta name="description" content="TeenX AI 队伍养成平台交互演示" />
     <title>TeenX · 交互演示</title>
     <link rel="icon" href="./teenx-logo.webp" />
-    <link rel="stylesheet" href="./styles.css?v=5" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
   </head>
-  <body>
+  <body class="landing-mode">
+    <section class="landing-view" data-panel="landing" aria-labelledby="landing-title">
+      <div class="landing-hero">
+        <canvas id="landing-canvas" aria-hidden="true"></canvas>
+        <header class="landing-nav-wrap">
+          <div class="landing-shell landing-nav">
+            <button class="landing-brand" type="button" data-go="landing" aria-label="TeenX 首页">
+              <img src="./teenx-logo.webp" width="48" height="48" alt="" />
+              <strong>TeenX</strong>
+            </button>
+            <nav aria-label="首页导航">
+              <a href="#landing-why">为什么 TeenX</a>
+              <a href="#landing-how">怎么玩</a>
+              <button type="button" data-go="community">社区</button>
+            </nav>
+            <div class="landing-nav-actions"><span>面向 11–16 岁</span><button type="button" data-go="studio">开始建队</button></div>
+          </div>
+        </header>
+
+        <div class="landing-shell landing-hero-content">
+          <p class="landing-kicker">TeenX · 少年 AI 队伍养成</p>
+          <h1 id="landing-title">别人给孩子一个 AI 工具，<br />我们给孩子一支 AI 队伍，<br />以及成为队长的责任。</h1>
+          <div class="landing-hero-lower">
+            <p>不写代码，也能定义角色、安排协作、发起试跑，并看见每个队员怎样把任务做出来。</p>
+            <div class="landing-hero-actions">
+              <button class="landing-cta" type="button" data-go="studio"><span>开始建队</span><b>→</b></button>
+              <a class="landing-role-badge" href="#landing-how"><span class="landing-people">◎</span>四角色起步 · 随时迭代</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="landing-why" id="landing-why">
+        <div class="landing-shell landing-section-inner">
+          <p class="landing-section-marker"><span>01</span>从使用者到队长</p>
+          <div class="landing-story">
+            <div><h2>不是问 AI 要一个答案，<br />而是带一支队伍把事情做出来。</h2><p>少年决定队伍里有哪些角色、每个队员负责什么，以及它们如何协作。每次修改都可以马上试跑、查看过程，再继续调整。</p><button type="button" class="landing-text-link" data-go="studio">看看组队室 →</button></div>
+            <figure><img src="./studio-overview.webp" width="1120" height="852" loading="lazy" alt="TeenX Studio 队伍概览，展示队员、版本和试跑入口" /><figcaption>真实组队室：看见角色、版本和下一次试跑。</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="landing-how" id="landing-how">
+        <div class="landing-shell landing-section-inner">
+          <p class="landing-section-marker"><span>02</span>队伍如何成长</p>
+          <div class="landing-how-head"><h2>组队、试跑、复盘，<br />再迭代。</h2><p>让每一次调整都有反馈，让“我的队伍在变强”真正看得见。</p></div>
+          <div class="landing-steps">
+            <article><span>01</span><h3>定义队伍</h3><p>选择角色、起名、设置职责与协作关系。</p><small>角色 · 职责 · 工具</small></article>
+            <article><span>02</span><h3>发起试跑</h3><p>给队伍一个任务，查看每位队员的贡献。</p><small>任务 · 活动 · 产物</small></article>
+            <article><span>03</span><h3>复盘迭代</h3><p>根据结果调整队伍，并封存成长版本。</p><small>反馈 · 版本 · 成长</small></article>
+          </div>
+          <div class="landing-final"><h2>带上你的第一支 AI 队伍。</h2><button type="button" class="landing-cta" data-go="studio"><span>进入 TeenX Studio</span><b>→</b></button></div>
+        </div>
+      </section>
+      <footer class="landing-foot"><div class="landing-shell"><strong>TeenX</strong><span>让每个孩子成为自己 AI 队伍的队长</span><button type="button" data-go="studio">进入 Studio →</button></div></footer>
+    </section>
+
     <header class="topbar">
       <div class="shell topbar-inner">
-        <button class="brand" type="button" data-go="studio" aria-label="返回 Studio">
+        <button class="brand" type="button" data-go="landing" aria-label="返回 TeenX 首页">
           <img src="./teenx-logo.webp" width="48" height="48" alt="" />
           <span>TeenX</span>
         </button>
@@ -181,6 +237,6 @@
         <div class="button-row end"><button class="button secondary" value="cancel" type="button" id="cancel-member">取消</button><button class="button primary" value="default" type="submit">添加到队伍</button></div>
       </form>
     </dialog>
-    <script src="./app.js?v=3"></script>
+    <script src="./app.js?v=6"></script>
   </body>
 </html>

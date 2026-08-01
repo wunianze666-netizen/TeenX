@@ -65,16 +65,93 @@ function showToast(message) {
 }
 
 function showView(name, updateHash = true) {
-  const safeName = panels.some((panel) => panel.dataset.panel === name) ? name : "studio";
+  const safeName = panels.some((panel) => panel.dataset.panel === name) ? name : "landing";
   panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== safeName; });
+  document.body.classList.toggle("landing-mode", safeName === "landing");
   navButtons.forEach((button) => {
     const selected = button.dataset.nav === safeName;
     button.setAttribute("aria-selected", String(selected));
     button.tabIndex = selected ? 0 : -1;
   });
   if (updateHash) history.replaceState(null, "", `#${safeName}`);
+  if (safeName === "landing") requestAnimationFrame(resizeLandingCanvas);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+const landingCanvas = document.querySelector("#landing-canvas");
+const landingHero = document.querySelector(".landing-hero");
+const landingContext = landingCanvas.getContext("2d");
+const landingPointer = { x: 0.72, y: 0.34, targetX: 0.72, targetY: 0.34 };
+const reduceLandingMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resizeLandingCanvas() {
+  const rect = landingCanvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  landingCanvas.width = Math.round(rect.width * ratio);
+  landingCanvas.height = Math.round(rect.height * ratio);
+  landingContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+}
+
+function drawLandingCanvas(time = 0) {
+  const width = landingCanvas.clientWidth;
+  const height = landingCanvas.clientHeight;
+  if (width && height) {
+    landingPointer.x += (landingPointer.targetX - landingPointer.x) * 0.04;
+    landingPointer.y += (landingPointer.targetY - landingPointer.y) * 0.04;
+    landingContext.clearRect(0, 0, width, height);
+
+    const columns = 9;
+    const rows = 6;
+    const points = [];
+    for (let row = 0; row <= rows; row += 1) {
+      const line = [];
+      for (let column = 0; column <= columns; column += 1) {
+        const baseX = (column / columns) * width;
+        const baseY = (row / rows) * height;
+        const wave = Math.sin(time * 0.00035 + column * 0.72 + row * 0.58) * 18;
+        const distanceX = baseX / width - landingPointer.x;
+        const distanceY = baseY / height - landingPointer.y;
+        const influence = Math.max(0, 1 - Math.hypot(distanceX, distanceY) * 2.2);
+        line.push({ x: baseX + wave * 0.55 + distanceX * influence * 42, y: baseY + wave + distanceY * influence * 32 });
+      }
+      points.push(line);
+    }
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        const a = points[row][column];
+        const b = points[row][column + 1];
+        const c = points[row + 1][column + 1];
+        const d = points[row + 1][column];
+        landingContext.beginPath();
+        landingContext.moveTo(a.x, a.y);
+        landingContext.lineTo(b.x, b.y);
+        landingContext.lineTo((row + column) % 2 ? d.x : c.x, (row + column) % 2 ? d.y : c.y);
+        landingContext.closePath();
+        landingContext.fillStyle = (row + column) % 3 === 0 ? "rgba(244, 133, 41, 0.085)" : "rgba(84, 162, 255, 0.025)";
+        landingContext.fill();
+        landingContext.strokeStyle = "rgba(27, 27, 24, 0.055)";
+        landingContext.lineWidth = 1;
+        landingContext.stroke();
+      }
+    }
+  }
+  if (!reduceLandingMotion) requestAnimationFrame(drawLandingCanvas);
+}
+
+landingHero.addEventListener("pointermove", (event) => {
+  const rect = landingCanvas.getBoundingClientRect();
+  landingPointer.targetX = (event.clientX - rect.left) / rect.width;
+  landingPointer.targetY = (event.clientY - rect.top) / rect.height;
+});
+landingHero.addEventListener("pointerleave", () => {
+  landingPointer.targetX = 0.72;
+  landingPointer.targetY = 0.34;
+});
+window.addEventListener("resize", resizeLandingCanvas);
+resizeLandingCanvas();
+drawLandingCanvas();
 
 function setText(selector, value) {
   document.querySelectorAll(selector).forEach((element) => { element.textContent = value; });
@@ -478,4 +555,4 @@ document.querySelector("#reset-demo").addEventListener("click", () => {
 
 window.addEventListener("hashchange", () => showView(location.hash.slice(1), false));
 hydrate();
-showView(location.hash.slice(1) || "studio", false);
+showView(location.hash.slice(1) || "landing", false);
