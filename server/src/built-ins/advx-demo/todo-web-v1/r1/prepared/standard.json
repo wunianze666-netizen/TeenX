@@ -1,0 +1,92 @@
+{
+  "id": "todo-demo-standard-v1",
+  "challengeVersionId": "todo-web:v1",
+  "rubricVersion": "arena-rubric-v3",
+  "totalMaxScore": 1000,
+  "generatedAt": "2026-07-25T00:00:00.000Z",
+  "challengeDigest": "a05a9d02eb8ee6718d0015d5dd78dcbf783c9a00d55381339d13da21a1f0b1bb",
+  "provenance": { "mode": "mock", "model": "demo-deterministic", "policy": "deepseek-fixed-v1" },
+  "criteria": [
+    {
+      "name": "需求符合度",
+      "maxScore": 200,
+      "rubric": "核对待办核心功能、筛选统计与刷新后持久化是否由源码完整覆盖。",
+      "subCriteria": [
+        { "name": "新增编辑完成删除", "maxScore": 80, "anchor0": "缺少核心操作", "anchorPartial": "仅覆盖部分操作或链路不完整", "anchorFull": "四项操作均有完整状态与界面链路" },
+        { "name": "筛选与统计", "maxScore": 55, "anchor0": "无筛选", "anchorPartial": "筛选或统计不完整", "anchorFull": "全部、进行中、已完成筛选与统计一致" },
+        { "name": "刷新持久化", "maxScore": 65, "anchor0": "无持久化", "anchorPartial": "存在静态持久化实现但未经运行验证", "anchorFull": "实测刷新后数据与筛选均可靠保留" }
+      ]
+    },
+    {
+      "name": "规则遵循",
+      "maxScore": 150,
+      "rubric": "逐条核对原生技术、单页、localStorage、空态、错误边界、手机布局和无后端限制。",
+      "subCriteria": [
+        { "name": "原生单页实现", "maxScore": 50, "anchor0": "违反原生或单页限制", "anchorPartial": "结构证据不完整", "anchorFull": "仅使用原生 HTML、CSS、JavaScript 的单页结构" },
+        { "name": "本地存储且无后端", "maxScore": 50, "anchor0": "依赖远程后端或无本地存储", "anchorPartial": "仅部分遵循", "anchorFull": "localStorage 持久化且无远程依赖" },
+        { "name": "空态错误与手机布局", "maxScore": 50, "anchor0": "三项均缺失", "anchorPartial": "源码覆盖但未实际渲染或仅部分实现", "anchorFull": "三项均经过真实浏览器验证" }
+      ]
+    },
+    {
+      "name": "代码/实现质量",
+      "maxScore": 150,
+      "rubric": "评估状态架构、正确性、可靠性、维护性、安全性、测试和性能资源边界。",
+      "subCriteria": [
+        { "name": "状态与渲染架构", "maxScore": 40, "anchor0": "无清晰架构", "anchorPartial": "分层合理但未经运行压力验证", "anchorFull": "状态、持久化和渲染职责清晰且实测可靠" },
+        { "name": "验证与故障恢复", "maxScore": 40, "anchor0": "无输入或存储保护", "anchorPartial": "有验证恢复路径但未经故障注入", "anchorFull": "验证与恢复经过系统测试" },
+        { "name": "可维护性", "maxScore": 35, "anchor0": "重复混乱且难维护", "anchorPartial": "命名和函数边界清楚但缺少自动化保障", "anchorFull": "结构清晰且有完整测试支撑" },
+        { "name": "测试安全性能资源", "maxScore": 35, "anchor0": "无相关考虑", "anchorPartial": "可见安全和性能设计但无自动化或实测", "anchorFull": "测试、安全、性能和资源释放均有直接验证" }
+      ]
+    },
+    {
+      "name": "创新性",
+      "maxScore": 150,
+      "rubric": "识别超出基础要求且确实降低误操作或增强日常使用价值的设计。",
+      "subCriteria": [
+        { "name": "可撤销安全操作", "maxScore": 60, "anchor0": "无超出基础要求的恢复机制", "anchorPartial": "有撤销实现但未实测复杂序列", "anchorFull": "撤销在删除和批量清理中完整可靠" },
+        { "name": "渐进式完成反馈", "maxScore": 50, "anchor0": "无额外反馈", "anchorPartial": "源码实现进度和即时反馈但未体验验证", "anchorFull": "反馈在实测中清楚且有价值" },
+        { "name": "克制且连贯的产品取舍", "maxScore": 40, "anchor0": "仅堆叠功能", "anchorPartial": "设计文档和实现体现克制取舍", "anchorFull": "取舍经用户验证并显著改善日常使用" }
+      ]
+    },
+    {
+      "name": "趣味性/体验感",
+      "maxScore": 100,
+      "rubric": "评估任务流程、反馈、可访问性和边界状态是否形成连贯体验。",
+      "subCriteria": [
+        { "name": "核心流程与反馈", "maxScore": 40, "anchor0": "流程中断或无反馈", "anchorPartial": "源码链路完整但未实际操作", "anchorFull": "真实操作流畅且反馈清楚" },
+        { "name": "键盘与辅助技术", "maxScore": 30, "anchor0": "缺少可访问性支持", "anchorPartial": "语义和键盘逻辑可见但未辅助技术实测", "anchorFull": "键盘和辅助技术均通过实测" },
+        { "name": "空态错误与恢复体验", "maxScore": 30, "anchor0": "边界状态缺失", "anchorPartial": "状态和恢复路径可见但未体验验证", "anchorFull": "边界体验经过真实场景验证" }
+      ]
+    },
+    {
+      "name": "视觉/审美",
+      "maxScore": 100,
+      "rubric": "评估视觉层级、令牌一致性、响应式和动效细节，同时遵守静态推断边界。",
+      "subCriteria": [
+        { "name": "层级与设计系统", "maxScore": 40, "anchor0": "无一致视觉系统", "anchorPartial": "令牌和层级代码完整但未渲染", "anchorFull": "渲染后层级、美感和一致性优秀" },
+        { "name": "响应式布局", "maxScore": 35, "anchor0": "无手机适配", "anchorPartial": "媒体查询和重排可见但未多设备验证", "anchorFull": "多断点真实验证无溢出或可用性问题" },
+        { "name": "动效与细节", "maxScore": 25, "anchor0": "无交互细节", "anchorPartial": "有克制动效和减弱动效支持但未渲染", "anchorFull": "动效和细节经过真实视觉验证" }
+      ]
+    },
+    {
+      "name": "问题解决能力",
+      "maxScore": 100,
+      "rubric": "判断状态模型、技术取舍和复杂边界是否针对小工具的核心风险。",
+      "subCriteria": [
+        { "name": "最小可靠状态模型", "maxScore": 40, "anchor0": "状态无法表达需求", "anchorPartial": "模型覆盖需求但未运行验证", "anchorFull": "模型经复杂操作序列验证可靠" },
+        { "name": "技术取舍合理", "maxScore": 30, "anchor0": "方案违背题目或过度设计", "anchorPartial": "无依赖、本地优先取舍清楚", "anchorFull": "取舍有测量或用户证据支持" },
+        { "name": "复杂边界处理", "maxScore": 30, "anchor0": "忽略边界", "anchorPartial": "源码处理坏数据、空输入和恢复", "anchorFull": "边界经过故障注入和端到端验证" }
+      ]
+    },
+    {
+      "name": "完成度与细节",
+      "maxScore": 50,
+      "rubric": "检查功能收尾、文档、启动说明和可直接交付性。",
+      "subCriteria": [
+        { "name": "功能与边界收尾", "maxScore": 20, "anchor0": "明显未完成", "anchorPartial": "源码覆盖完整但缺少自动化验收", "anchorFull": "功能与边界均通过验收" },
+        { "name": "文档与验收说明", "maxScore": 15, "anchor0": "无文档", "anchorPartial": "文档具体但验收未执行", "anchorFull": "文档完整且验收记录可复核" },
+        { "name": "零依赖可交付", "maxScore": 15, "anchor0": "无法直接运行", "anchorPartial": "仍需未说明步骤", "anchorFull": "文件完整且无需安装、构建或服务" }
+      ]
+    }
+  ]
+}

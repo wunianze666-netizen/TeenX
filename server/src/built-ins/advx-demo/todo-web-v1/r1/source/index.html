@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A calm, private Todo list that remembers your work.">
+    <meta name="theme-color" content="#f5f1e8">
+    <title>Remember Todo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <p class="eyebrow">Private by default · saved on this device</p>
+        <div class="title-row">
+          <div>
+            <h1>Remember what matters.</h1>
+            <p class="lede">A small list with enough structure to finish the day.</p>
+          </div>
+          <div class="progress" aria-label="Completion progress">
+            <strong id="progress-value">0%</strong>
+            <span class="progress-track" aria-hidden="true"><span id="progress-bar"></span></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="workspace" aria-labelledby="list-title">
+        <form id="todo-form" class="composer" novalidate>
+          <div class="field">
+            <label for="todo-input">What needs doing?</label>
+            <input id="todo-input" name="todo" maxlength="160" autocomplete="off" aria-describedby="input-help input-error">
+            <span id="input-help" class="hint">Press Enter to add · up to 160 characters</span>
+            <span id="input-error" class="error" role="alert"></span>
+          </div>
+          <button class="primary" type="submit">Add task</button>
+        </form>
+
+        <div class="toolbar">
+          <div id="filters" class="filters" aria-label="Filter tasks">
+            <button type="button" data-filter="all" aria-pressed="true">All <span id="count-all">0</span></button>
+            <button type="button" data-filter="active" aria-pressed="false">Active <span id="count-active">0</span></button>
+            <button type="button" data-filter="completed" aria-pressed="false">Done <span id="count-completed">0</span></button>
+          </div>
+          <button id="clear-completed" class="quiet" type="button" disabled>Clear completed</button>
+        </div>
+
+        <div class="list-heading">
+          <h2 id="list-title">Today</h2>
+          <span id="remaining-label">Nothing waiting</span>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+
+        <section id="empty-state" class="empty-state" aria-live="polite">
+          <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+            <path d="M17 11h30a6 6 0 0 1 6 6v30a6 6 0 0 1-6 6H17a6 6 0 0 1-6-6V17a6 6 0 0 1 6-6Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="m21 32 7 7 15-16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Your day has room.</h3>
+          <p id="empty-copy">Add one clear next step above.</p>
+        </section>
+      </section>
+    </main>
+
+    <aside id="notice" class="notice" aria-live="polite" aria-atomic="true" hidden>
+      <span id="notice-text"></span>
+      <button id="undo-button" type="button" hidden>Undo</button>
+    </aside>
+    <template id="todo-template">
+      <li class="todo-item">
+        <label class="check-wrap"><input type="checkbox"><span class="check-mark" aria-hidden="true"></span></label>
+        <span class="todo-text"></span>
+        <div class="row-actions">
+          <button class="edit" type="button">Edit</button>
+          <button class="delete" type="button">Delete</button>
+        </div>
+      </li>
+    </template>
+  </body>
+</html>

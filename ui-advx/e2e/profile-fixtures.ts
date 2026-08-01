@@ -1,0 +1,42 @@
+const DIMENSIONS = [
+  { name: "需求符合度", score: 144, maxScore: 200 },
+  { name: "规则遵循", score: 108, maxScore: 150 },
+  { name: "代码/实现质量", score: 108, maxScore: 150 },
+  { name: "创新性", score: 108, maxScore: 150 },
+  { name: "趣味性/体验感", score: 72, maxScore: 100 },
+  { name: "视觉/审美", score: 72, maxScore: 100 },
+  { name: "问题解决能力", score: 72, maxScore: 100 },
+  { name: "完成度与细节", score: 36, maxScore: 50 },
+];
+
+export const nonOfficialArenaScore = {
+  id: "score-1",
+  submissionId: "submission-1",
+  challengeVersionId: "todo-web-v1",
+  teamVersionId: "team-version-1",
+  submissionSha256: "abc",
+  rubricVersion: "arena-rubric-v3",
+  official: false,
+  totalScore: 720,
+  totalMaxScore: 1000,
+  summary: "",
+  strengths: [],
+  weaknesses: [],
+  dimensions: DIMENSIONS.map((dimension) => ({
+    ...dimension,
+    comment: "",
+    subScores: [{
+      name: dimension.name,
+      score: dimension.score,
+      maxScore: dimension.maxScore,
+      comment: "",
+      anchor: "partial",
+      confidence: "high",
+      verification: "source_verified",
+      evidence: [{ path: "src/index.ts", lineStart: 1, lineEnd: 1, quote: "fixture", verified: true }],
+      evidenceWarnings: [],
+    }],
+    review: { primaryScore: dimension.score, independentScore: dimension.score, delta: 0, adjudicated: true },
+  })),
+  scoredAt: "2026-07-22T00:01:00.000Z",
+};

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "fixtureId": "todo-web-v1-r1",
+  "revision": "r1",
+  "challengeVersionId": "todo-web:v1",
+  "official": false,
+  "studioGenerated": false,
+  "archive": {
+    "path": "submission.zip",
+    "byteSize": 8755,
+    "sha256": "8c9c22f4478de9cb56f9137f6fd1324f6267dc93312aeeafe6ed27c5a7b179b4",
+    "entryOrder": [
+      "DESIGN.md",
+      "README.md",
+      "app.js",
+      "index.html",
+      "styles.css"
+    ],
+    "modifiedAt": "2020-01-01T00:00:00.000Z",
+    "unixMode": "100644",
+    "compression": "deflate-raw-level-9"
+  },
+  "prepared": {
+    "standard": "prepared/standard.json",
+    "score": "prepared/public-score.json",
+    "providerReplay": "prepared/provider-replay.json",
+    "evidenceMatrix": "prepared/evidence-matrix.md"
+  },
+  "assets": [
+    {
+      "path": "prepared/evidence-matrix.md",
+      "byteSize": 6856,
+      "sha256": "532ed988dd3432d1d82f2fe715006db39bb4eec3f1fe74cc7f1d2d1339934460"
+    },
+    {
+      "path": "prepared/provider-replay.json",
+      "byteSize": 409,
+      "sha256": "b74677775ffafc759141b3c9c7072d19c54bf8580659fe296e479fe43ef76201"
+    },
+    {
+      "path": "prepared/public-score.json",
+      "byteSize": 20349,
+      "sha256": "e50f31cba593748ca615e5863de2c95cc20b7edd09bcdc5d35bd8f8e51654a94"
+    },
+    {
+      "path": "prepared/standard.json",
+      "byteSize": 7440,
+      "sha256": "917cd346c968024b9fc1e39cb74c1ff029ab85f0bb1add1095866c2c3b6e80f7"
+    },
+    {
+      "path": "source/DESIGN.md",
+      "byteSize": 3034,
+      "sha256": "38a33688c9b2736e561ce21f48694c786616479ecc7276fbfb5c718ed0c05219"
+    },
+    {
+      "path": "source/README.md",
+      "byteSize": 1606,
+      "sha256": "4528f55f20f3917bd21d0efea701724f50a76dd950e82f12bba509ea3c2e3673"
+    },
+    {
+      "path": "source/app.js",
+      "byteSize": 7790,
+      "sha256": "ba0d5519be9e4ef3f995adad959e416ddc33be96f399098c0f9d9b40ad553852"
+    },
+    {
+      "path": "source/index.html",
+      "byteSize": 3673,
+      "sha256": "8fbb1fc4286f3c41f7b59f5cebf27217754e541c957260cefb258203365c2266"
+    },
+    {
+      "path": "source/styles.css",
+      "byteSize": 7360,
+      "sha256": "5c40363a33be49f08fe56de8b7feb7a818d7c2f9441e4fe14ae49648664ac7d8"
+    },
+    {
+      "path": "submission.zip",
+      "byteSize": 8755,
+      "sha256": "8c9c22f4478de9cb56f9137f6fd1324f6267dc93312aeeafe6ed27c5a7b179b4"
+    }
+  ]
+}

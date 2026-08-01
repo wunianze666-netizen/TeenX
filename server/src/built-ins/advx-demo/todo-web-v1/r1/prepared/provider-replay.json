@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "verified-prepared-score",
+  "challengeVersionId": "todo-web:v1",
+  "revision": "r1",
+  "official": false,
+  "studioGenerated": false,
+  "archiveAsset": "submission.zip",
+  "standardAsset": "prepared/standard.json",
+  "scoreAsset": "prepared/public-score.json",
+  "provenance": {
+    "mode": "mock",
+    "model": "demo-deterministic",
+    "policy": "deepseek-fixed-v1"
+  }
+}

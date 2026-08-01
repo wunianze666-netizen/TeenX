@@ -1,0 +1,56 @@
+/* TeenX UI 原型 · 设计令牌
+   唯一允许出现的颜色字面量（AdventureX 七色）：
+   #000000 背景 / #0a0a0a 表面 / #ffffff 前景 / #737373 弱化
+   #242424 描边 / #f48529 主 accent（橙） / #54a2ff 次 accent（蓝）
+   其余一律用 var(--xx) 或 color-mix 派生，禁止新增 hex。 */
+
+:root {
+  --bg:      #000000;
+  --surface: #0a0a0a;
+  --fg:      #ffffff;
+  --muted:   #737373;
+  --border:  #242424;
+  --accent:  #f48529;
+  --accent-2:#54a2ff;
+
+  /* 派生 —— 不引入新颜色 */
+  --accent-soft:  color-mix(in oklch, var(--accent) 14%, transparent);
+  --accent-2-soft:color-mix(in oklch, var(--accent-2) 14%, transparent);
+  --fg-soft:      color-mix(in oklch, var(--fg) 5%, transparent);
+  --fg-softer:    color-mix(in oklch, var(--fg) 9%, transparent);
+  --muted-readable: color-mix(in oklch, var(--muted) 88%, var(--fg));
+
+  /* Landing 语义 —— 仅由七色令牌派生 */
+  --landing-paper-soft: color-mix(in oklch, var(--fg) 93%, var(--muted));
+  --landing-ink:        color-mix(in oklch, var(--surface) 72%, var(--border));
+  --landing-line:       color-mix(in oklch, var(--bg) 10%, transparent);
+
+  --font-display: 'Patika', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Patika', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --fs-h1: clamp(40px, 5vw, 64px);
+  --fs-h2: clamp(28px, 3.4vw, 40px);
+  --fs-h3: 20px;
+  --fs-lead: 17px;
+  --fs-body: 15px;
+  --fs-meta: 13px;
+
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 20px;
+  --gap-lg: 32px;
+  --gap-xl: 48px;
+
+  --logo-size-product-header: 44px;
+  --logo-size-landing-header: 44px;
+  --logo-size-landing-header-mobile: 42px;
+  --logo-size-landing-menu: 44px;
+  --logo-size-landing-footer: 48px;
+
+  --container: 1120px;
+  --profile-narrow: 720px;
+  --touch-target: 44px;
+  --gutter: 32px;
+  --radius: 8px;
+}

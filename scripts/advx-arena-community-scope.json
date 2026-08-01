@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "baselineDirectory": ".omo/evidence/arena-community-competition/a1",
+  "evidenceDirectory": ".omo/evidence/arena-community-competition/a1",
+  "implementationExact": [
+    "AGENTS.md",
+    "cli/package.json",
+    "package.json",
+    "pnpm-lock.yaml",
+    "server/package.json",
+    "ui-advx/package.json",
+    "ui/package.json",
+    "docs/12-handoff-12-arena-community-competition.md"
+  ],
+  "implementationPrefixes": [
+    ".github/workflows/",
+    "scripts/",
+    "server/src/__tests__/advx-arena-community",
+    "server/src/__tests__/teenx-child-gate",
+    "server/src/built-ins/advx-arena/seasons/",
+    "server/src/middleware/teenx-child-gate",
+    "server/src/routes/advx",
+    "server/src/services/advx-arena-community",
+    "server/src/services/advx-arena/",
+    "server/src/services/teenx-",
+    "server/src/app.ts",
+    "server/src/index.ts",
+    "tests/e2e/advx-",
+    "tests/e2e/fixtures/advx-",
+    "tests/e2e/playwright-advx-",
+    "ui-advx/e2e/",
+    "ui-advx/src/"
+  ],
+  "generatedReportExact": [
+    "docs/12-handoff-12-report.md",
+    "docs/PROJECT-INTRO.md",
+    "doc/DEVELOPING.md"
+  ],
+  "generatedReportPrefixes": [],
+  "evidenceExact": [],
+  "evidencePrefixes": [
+    ".omo/evidence/arena-community-competition/a1/"
+  ],
+  "engineOwnedExact": [
+    ".omo/boulder.json",
+    ".omo/start-work/ledger.jsonl"
+  ],
+  "engineOwnedPrefixes": [
+    ".omo/run-continuation/"
+  ],
+  "protectedExact": [],
+  "protectedPrefixes": [
+    "packages/db/"
+  ]
+}

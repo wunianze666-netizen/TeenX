@@ -1,0 +1,13 @@
+{
+  "id": "todo-web",
+  "version": 1,
+  "challengeVersionId": "todo-web:v1",
+  "title": "会记住的待办清单",
+  "description": "做一个清楚、可靠、愿意每天打开的待办事项网页应用。重点不是堆功能，而是把一个小工具真正做完整。",
+  "goal": "实现一个功能完整的待办事项应用，支持新增、编辑、完成、删除、筛选，并在刷新页面后保留数据。",
+  "rules": "必须使用原生 HTML、CSS 与 JavaScript；必须是单页应用；使用 localStorage 持久化；需要有空状态、错误边界说明和手机端可用布局；不得依赖远程后端服务。",
+  "submitType": "zip",
+  "opensAt": "2026-07-01T00:00:00.000Z",
+  "closesAt": "2027-12-31T23:59:59.000Z",
+  "status": "open"
+}

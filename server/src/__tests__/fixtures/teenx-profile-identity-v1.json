@@ -1,0 +1,10 @@
+{
+  "contractVersion": "teenx-profile-identity-v1",
+  "captainId": "captain-test-0001",
+  "publicIdSecret": "teenx-profile-golden-secret-0001",
+  "nicknameInput": "  ＴｅｅｎＸ　小队长  ",
+  "safeNickname": "TeenX 小队长",
+  "digest": "XV_QF7BlCM6AUq1nDTbsYn2RGOgQcnQmZCZqXJEKMlE",
+  "publicId": "captain_v1_XV_QF7BlCM6AUq1nDTbsYn2RGOgQcnQmZCZqXJEKMlE",
+  "forumUsername": "tx_XV_QF7BlCM6AUq1n"
+}
