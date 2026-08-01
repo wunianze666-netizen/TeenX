@@ -31,6 +31,9 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .nav-tabs button:hover, .nav-tabs button[aria-selected="true"] { color: var(--fg); }
 .nav-tabs button[aria-selected="true"] { border-bottom-color: var(--accent); }
 .captain { display: inline-flex; align-items: center; gap: 8px; color: color-mix(in oklch, var(--muted) 82%, var(--fg)); white-space: nowrap; }
+.top-actions { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+.quick-reset { min-height: 36px; padding: 5px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap; }
+.quick-reset:hover { border-color: var(--accent); color: var(--fg); }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
 h1, h2, h3, p { margin-top: 0; }
 h1 { margin-bottom: 8px; font-size: 34px; line-height: 1.15; }
@@ -215,6 +218,7 @@ td .pill { margin-left: 10px; }
   .topbar-inner { grid-template-columns: auto 1fr; }
   .nav-tabs { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; padding-bottom: 8px; }
   .captain { justify-self: end; }
+  .top-actions { justify-self: end; }
   .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .team-band, .action-band, .split-head { align-items: flex-start; flex-direction: column; }
   .team-facts { width: 100%; justify-content: space-between; }
@@ -229,6 +233,8 @@ td .pill { margin-left: 10px; }
   .topbar-inner { gap: 10px 18px; }
   .brand span { display: none; }
   .captain { font-size: 12px; }
+  .top-actions { gap: 8px; }
+  .quick-reset { min-height: 34px; padding-inline: 8px; font-size: 12px; }
   .nav-tabs { gap: 20px; }
   .member-grid, .score-grid { grid-template-columns: 1fr; }
   .member-card { min-height: 190px; }

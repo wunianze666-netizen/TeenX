@@ -1,4 +1,7 @@
 const storageKey = "teenx-interactive-demo-v2";
+const launchParams = new URLSearchParams(location.search);
+const freshLaunch = launchParams.get("fresh") === "1";
+if (freshLaunch) localStorage.removeItem(storageKey);
 const defaultState = {
   teamName: "Todo Makers",
   captainName: "小创",
@@ -469,13 +472,22 @@ document.querySelector("#profile-form").addEventListener("submit", (event) => {
 });
 
 document.querySelectorAll(".toggle-list input").forEach((input) => input.addEventListener("change", () => showToast("公开设置已更新")));
-document.querySelector("#reset-demo").addEventListener("click", () => {
+function resetDemo() {
   if (!confirm("确定重置所有演示数据吗？")) return;
   localStorage.removeItem(storageKey);
   location.hash = "studio";
   location.reload();
-});
+}
+
+document.querySelector("#quick-reset").addEventListener("click", resetDemo);
+document.querySelector("#reset-demo").addEventListener("click", resetDemo);
 
 window.addEventListener("hashchange", () => showView(location.hash.slice(1), false));
 hydrate();
-showView(location.hash.slice(1) || "studio", false);
+if (freshLaunch) {
+  history.replaceState(null, "", `${location.pathname}#studio`);
+  showView("studio", false);
+  showToast("已开始全新演示");
+} else {
+  showView(location.hash.slice(1) || "studio", false);
+}
