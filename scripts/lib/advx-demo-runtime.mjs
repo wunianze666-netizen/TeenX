@@ -6,6 +6,7 @@ import { get as httpGet } from "node:http";
 const PORT_COUNT = 3;
 const PORT_ATTEMPTS = 24;
 const STOP_TIMEOUT_MS = 5_000;
+const DEFAULT_READINESS_TIMEOUT_MS = 240_000;
 
 export class DemoPortCollisionError extends Error {
   name = "DemoPortCollisionError";
@@ -98,7 +99,7 @@ export async function waitForDemoReadiness(input, dependencies = {}) {
   const now = dependencies.now ?? Date.now;
   const sleep = dependencies.sleep ?? ((milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)));
   const isProcessAlive = dependencies.isProcessAlive ?? defaultIsProcessAlive;
-  const deadline = now() + (input.timeoutMs ?? 120_000);
+  const deadline = now() + (input.timeoutMs ?? DEFAULT_READINESS_TIMEOUT_MS);
   let lastError = new DemoReadinessError("ADVX demo did not become ready");
   while (now() < deadline) {
     if (input.signal?.aborted) throw new DemoReadinessError("ADVX demo startup was interrupted");

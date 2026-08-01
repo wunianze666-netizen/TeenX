@@ -336,6 +336,34 @@ test("waitForDemoReadiness stops immediately when startup is interrupted", async
   assert.equal(probes, 0);
 });
 
+test("waitForDemoReadiness allows four minutes for a cold local database", async () => {
+  // Given
+  let currentTime = 0;
+  let probes = 0;
+
+  // When / Then
+  await assert.rejects(
+    waitForDemoReadiness(
+      {
+        workspace: { apiOrigin: "http://127.0.0.1:43171", profile: "prepared_demo" },
+        children: [{ pid: 90400 }],
+      },
+      {
+        now: () => currentTime,
+        sleep: async (milliseconds) => { currentTime += milliseconds; },
+        isProcessAlive: () => true,
+        probeJson: async () => {
+          probes += 1;
+          throw new Error("still starting");
+        },
+      },
+    ),
+    /Timed out waiting for ADVX demo readiness/,
+  );
+  assert.equal(currentTime, 240_000);
+  assert.ok(probes > 1);
+});
+
 test("defaultIsProcessGroupAlive treats macOS zombie-group EPERM as still present", {
   skip: process.platform === "win32",
 }, () => {
