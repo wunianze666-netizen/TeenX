@@ -101,41 +101,35 @@ function drawLandingCanvas(time = 0) {
     landingPointer.y += (landingPointer.targetY - landingPointer.y) * 0.04;
     landingContext.clearRect(0, 0, width, height);
 
-    const columns = 9;
-    const rows = 6;
-    const points = [];
-    for (let row = 0; row <= rows; row += 1) {
-      const line = [];
-      for (let column = 0; column <= columns; column += 1) {
-        const baseX = (column / columns) * width;
-        const baseY = (row / rows) * height;
-        const wave = Math.sin(time * 0.00035 + column * 0.72 + row * 0.58) * 18;
-        const distanceX = baseX / width - landingPointer.x;
-        const distanceY = baseY / height - landingPointer.y;
-        const influence = Math.max(0, 1 - Math.hypot(distanceX, distanceY) * 2.2);
-        line.push({ x: baseX + wave * 0.55 + distanceX * influence * 42, y: baseY + wave + distanceY * influence * 32 });
-      }
-      points.push(line);
-    }
+    landingContext.fillStyle = "rgb(255, 247, 239)";
+    landingContext.fillRect(0, 0, width, height);
+    landingContext.save();
+    const bandWidth = Math.max(92, width / 9.5);
+    const drift = reduceLandingMotion ? 0 : Math.sin(time * 0.00018) * bandWidth * 0.18;
+    const pointerShift = (landingPointer.x - 0.5) * bandWidth * 0.8;
+    const slant = -0.34 + (landingPointer.y - 0.5) * 0.05;
+    landingContext.transform(1, 0, slant, 1, 0, 0);
+    landingContext.translate(drift + pointerShift - bandWidth * 2, -height * 0.2);
 
-    for (let row = 0; row < rows; row += 1) {
-      for (let column = 0; column < columns; column += 1) {
-        const a = points[row][column];
-        const b = points[row][column + 1];
-        const c = points[row + 1][column + 1];
-        const d = points[row + 1][column];
-        landingContext.beginPath();
-        landingContext.moveTo(a.x, a.y);
-        landingContext.lineTo(b.x, b.y);
-        landingContext.lineTo((row + column) % 2 ? d.x : c.x, (row + column) % 2 ? d.y : c.y);
-        landingContext.closePath();
-        landingContext.fillStyle = (row + column) % 3 === 0 ? "rgba(244, 133, 41, 0.085)" : "rgba(84, 162, 255, 0.025)";
-        landingContext.fill();
-        landingContext.strokeStyle = "rgba(27, 27, 24, 0.055)";
-        landingContext.lineWidth = 1;
-        landingContext.stroke();
-      }
+    for (let index = -2; index < 16; index += 1) {
+      const x = index * bandWidth;
+      const strength = 0.42 + ((index + 16) % 4) * 0.1;
+      landingContext.fillStyle = `rgba(244, 133, 41, ${strength})`;
+      landingContext.fillRect(x, 0, bandWidth * 0.78, height * 1.5);
+
+      landingContext.shadowBlur = 24;
+      landingContext.shadowColor = "rgba(255, 255, 255, 0.92)";
+      landingContext.fillStyle = "rgba(255, 255, 255, 0.72)";
+      landingContext.fillRect(x + bandWidth * 0.58, 0, bandWidth * 0.19, height * 1.5);
+      landingContext.shadowBlur = 0;
+
+      landingContext.fillStyle = "rgba(255, 255, 255, 0.28)";
+      landingContext.fillRect(x + bandWidth * 0.04, 0, bandWidth * 0.11, height * 1.5);
     }
+    landingContext.restore();
+
+    landingContext.fillStyle = "rgba(255, 255, 255, 0.14)";
+    landingContext.fillRect(0, height * 0.72, width, height * 0.28);
   }
   if (!reduceLandingMotion) requestAnimationFrame(drawLandingCanvas);
 }
